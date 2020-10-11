@@ -4,6 +4,8 @@ import java.util.Date;
 
 import javax.servlet.ServletException;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.jasypt.util.password.PasswordEncryptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -27,6 +29,8 @@ import io.jsonwebtoken.SignatureAlgorithm;
 @RequestMapping("/cliente")
 public class ClienteController {
 	
+	private static final Logger logger = LogManager.getLogger(ClienteController.class);
+	
 	@Autowired
 	ClienteService clienteService;
 	
@@ -37,6 +41,7 @@ public class ClienteController {
     public ResponseEntity<?> login(@RequestBody Cliente clienteLogin) throws ServletException, ClienteEmailNotFoundException{
     	String jwtToken = "";
         if (clienteLogin.getEmail() == null || clienteLogin.getContrasena()== null) {
+        	logger.error("Error");
             throw new ServletException("Please fill in username and password");
         }
 
@@ -48,12 +53,13 @@ public class ClienteController {
         String pwd = cliente.getContrasena();
 
         if (!passwordEncryptor.checkPassword(password, pwd)) {
+        	logger.info("datos incorrectos en el logueo");
             throw new ServletException("Invalid login. Please check your name and password.");
         }
 
         jwtToken = Jwts.builder().setSubject(email).claim("roles", "user").setIssuedAt(new Date()).signWith(
                 SignatureAlgorithm.HS256, "secretkey").compact();
-
+        logger.debug("Logueo exitoso");
         return new ResponseEntity<>(new Token(jwtToken, cliente), HttpStatus.OK);
     }
 
