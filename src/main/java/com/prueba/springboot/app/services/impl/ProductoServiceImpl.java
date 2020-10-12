@@ -35,13 +35,13 @@ public class ProductoServiceImpl implements ProductoService {
 	}
 
 	@Override
-	public Producto getProductoById(String idProducto) throws ProductoIdNotFoundException {
+	public Producto getProductoById(Long idProducto) throws ProductoIdNotFoundException {
 		Optional<Producto> producto=productoRepository.findById(idProducto);
 		return producto.orElseThrow(()-> new ProductoIdNotFoundException("Id del producto:"+idProducto));
 	}
 
 	@Override
-	public void deleteProducto(String idProducto) throws ProductoIdNotFoundException{
+	public void deleteProducto(Long idProducto) throws ProductoIdNotFoundException{
 		if(!productoRepository.existsById(idProducto)) {
 			throw new  ProductoIdNotFoundException("Id del producto:"+idProducto);
 		}

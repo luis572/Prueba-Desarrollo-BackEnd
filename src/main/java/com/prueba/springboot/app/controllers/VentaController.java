@@ -17,6 +17,10 @@ import com.prueba.springboot.app.exception.VentaIdNotFoundException;
 import com.prueba.springboot.app.models.Venta;
 import com.prueba.springboot.app.services.VentaService;
 
+import rx.Scheduler;
+import rx.Single;
+import rx.schedulers.Schedulers;
+
 @RestController
 @RequestMapping("/api/venta")
 public class VentaController {
@@ -30,7 +34,13 @@ public class VentaController {
 	}
 
 	@GetMapping("/idventa/{idventa}")
-	public ResponseEntity<?> getVentaById(@PathVariable String idventa) throws VentaIdNotFoundException {
+	public ResponseEntity<?> getVentaById(@PathVariable Long idventa) throws VentaIdNotFoundException {
 		return new ResponseEntity<>(ventaService.getVentaById(idventa),HttpStatus.OK);
+	}
+	
+	@GetMapping("/detalles/{idventa}")
+	public Single<ResponseEntity<?>> getDetallesVentaById(@PathVariable Long idventa) throws VentaIdNotFoundException {
+		return ventaService.getDetallesByVentaId(idventa).subscribeOn(Schedulers.io()).map(s ->
+			new ResponseEntity<>(s,HttpStatus.OK));
 	}
 }

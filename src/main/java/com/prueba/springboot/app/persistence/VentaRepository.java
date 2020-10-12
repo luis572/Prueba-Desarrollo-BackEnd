@@ -7,6 +7,6 @@ import org.springframework.stereotype.Repository;
 import com.prueba.springboot.app.models.Venta;
 
 
-public interface VentaRepository extends CrudRepository<Venta, String> {
+public interface VentaRepository extends CrudRepository<Venta, Long> {
 
 }

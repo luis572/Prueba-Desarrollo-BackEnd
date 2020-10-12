@@ -7,6 +7,6 @@ import org.springframework.stereotype.Repository;
 import com.prueba.springboot.app.models.Producto;
 
 
-public interface ProductoRepository extends CrudRepository<Producto,String>{
+public interface ProductoRepository extends CrudRepository<Producto,Long>{
 
 }

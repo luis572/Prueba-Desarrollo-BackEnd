@@ -10,8 +10,8 @@ public interface ProductoService {
 	
 	Producto UpdateProducto(Producto producto) throws ProductoIdNotFoundException ;
 	
-	Producto getProductoById(String idProducto) throws ProductoIdNotFoundException;
+	Producto getProductoById(Long idProducto) throws ProductoIdNotFoundException;
 	
-	void deleteProducto(String idProducto) throws ProductoIdNotFoundException ;
+	void deleteProducto(Long idProducto) throws ProductoIdNotFoundException ;
 	
 }

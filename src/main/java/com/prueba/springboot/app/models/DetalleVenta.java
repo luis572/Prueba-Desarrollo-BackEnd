@@ -6,10 +6,14 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "detalles_venta")
@@ -17,12 +21,14 @@ public class DetalleVenta implements Serializable {
 
 	@Id
 	@Column(name = "id_detalle_venta")
-	private String idDetalleVenta;
+	@GeneratedValue(strategy =GenerationType.IDENTITY )
+	private Long idDetalleVenta;
 	
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_producto")
-	private Producto Producto; 
+	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+	private Producto producto; 
 	
 	
 	public DetalleVenta() {
@@ -30,24 +36,24 @@ public class DetalleVenta implements Serializable {
 	}
 
 
-	public String getIdDetalleVenta() {
+	public Long getIdDetalleVenta() {
 		return idDetalleVenta;
 	}
 
 
-	public void setIdDetalleVenta(String idDetalleVenta) {
+	public void setIdDetalleVenta(Long idDetalleVenta) {
 		this.idDetalleVenta = idDetalleVenta;
 	}
 
 	
 
 	public Producto getProducto() {
-		return Producto;
+		return producto;
 	}
 
 
 	public void setProducto(Producto producto) {
-		Producto = producto;
+		this.producto = producto;
 	}
 
 

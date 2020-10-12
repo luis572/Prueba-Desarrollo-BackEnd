@@ -11,7 +11,7 @@ import com.prueba.springboot.app.models.Cliente;
 
 
 
-public interface ClienteRepository extends CrudRepository<Cliente, String> {
+public interface ClienteRepository extends CrudRepository<Cliente, Long> {
 	
 	boolean existsByDni(String dni);
 

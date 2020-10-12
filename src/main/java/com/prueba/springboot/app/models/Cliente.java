@@ -8,10 +8,15 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 
 @Table(name = "clientes")
@@ -20,10 +25,11 @@ public class Cliente implements Serializable {
 
 	@Id
 	@Column(name = "id_cliente")
-	private String idCliente;
+	@GeneratedValue(strategy =GenerationType.IDENTITY )
+	private Long idCliente;
 
-	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@JoinColumn(name = "id_cliente")
+	@OneToMany(mappedBy = "cliente",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JsonManagedReference
 	private List<Venta> ventas;
 	
 	private String nombre;
@@ -40,14 +46,14 @@ public class Cliente implements Serializable {
 
 	public Cliente() {
 		
-		ventas=new ArrayList<>();
+		this.ventas=new ArrayList<>();
 	}
 
-	public String getIdCliente() {
+	public Long getIdCliente() {
 		return idCliente;
 	}
 
-	public void setIdCliente(String idCliente) {
+	public void setIdCliente(Long idCliente) {
 		this.idCliente = idCliente;
 	}
 
@@ -109,6 +115,12 @@ public class Cliente implements Serializable {
 
 	public void addVenta(Venta venta) {
 		this.ventas.add(venta);
+	}
+
+	@Override
+	public String toString() {
+		return "Cliente [idCliente=" + idCliente + ", nombre=" + nombre + ", apellido=" + apellido + ", dni=" + dni
+				+ ", telefono=" + telefono + ", email=" + email + ", contrasena=" + contrasena + "]";
 	}
 
 	/**

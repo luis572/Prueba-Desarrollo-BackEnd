@@ -18,7 +18,7 @@ import com.prueba.springboot.app.models.Producto;
 import com.prueba.springboot.app.services.ProductoService;
 
 @RestController
-@RequestMapping("/api/producto")
+@RequestMapping("/producto")
 public class ProductoController {
 
 	@Autowired
@@ -35,13 +35,13 @@ public class ProductoController {
 	}
 
 	@DeleteMapping("/idproducto/{idproducto}")
-	public ResponseEntity<?> deleteProducto(@PathVariable String idproducto) throws ProductoIdNotFoundException {
+	public ResponseEntity<?> deleteProducto(@PathVariable Long idproducto) throws ProductoIdNotFoundException {
 		productoService.deleteProducto(idproducto);
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 
 	@GetMapping("/idproducto/{idproducto}")
-	public ResponseEntity<?> getProductoById(@PathVariable String idproducto) throws ProductoIdNotFoundException {
+	public ResponseEntity<?> getProductoById(@PathVariable Long idproducto) throws ProductoIdNotFoundException {
 		return new ResponseEntity<>(productoService.getProductoById(idproducto),HttpStatus.OK);
 	}
 }
