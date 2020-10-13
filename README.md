@@ -22,6 +22,15 @@ se debe de clonar el proyecto, para esto utilizaremos el comando git clone. ubí
 ### Docker:
 - docker build --tag prueba_back .
 - docker run --name prueba_back -p 8080:8080 prueba_back:latest
+## Datos de pruebas registrados:
+### Usuarios de prueba registrados: 
+- Usuario: carlos@gmail.com – Contraseña: 123456.
+- Usuario: andres@gmail.com – Contraseña: andres123.
+### Ventas Registradas: 
+![alt text](https://github.com/luis572/Prueba-Desarrollo-BackEnd/blob/master/recursos/ventas_pruebas.JPG " Resultado")
+### Productos Registrados: 
+![alt text](https://github.com/luis572/Prueba-Desarrollo-BackEnd/blob/master/recursos/productos_prueba.JPG " Resultado")
+
 ## Servicios: 
 ### Cliente[R]: 
 -	POST */cliente/register* : Se encarga de registrar a un cliente en la base de datos. 
@@ -42,22 +51,22 @@ Authorization:"Bearer "+token.
 ### Pruebas manuales: 
 A continuación se adjuntas comprobantes de pruebas manuales de algunos servicios: 
 #### Registrar Cliente:
-![alt text](https://github.com/luis572/Prueba-Desarrollo-BackEnd/tree/master/recursos/RegistroCliente.JPG " Resultado")
+![alt text](https://github.com/luis572/Prueba-Desarrollo-BackEnd/blob/master/recursos/RegistroCliente.JPG " Resultado")
 #### Login Cliente:
-![alt text](https://github.com/luis572/Prueba-Desarrollo-BackEnd/tree/master/recursos/loginCliente.JPG " Resultado")
+![alt text](https://github.com/luis572/Prueba-Desarrollo-BackEnd/blob/master/recursos/loginCliente.JPG " Resultado")
 #### Registar una venta: 
-![alt text](https://github.com/luis572/Prueba-Desarrollo-BackEnd/tree/master/recursos/RegistrarVenta.JPG " Resultado")
+![alt text](https://github.com/luis572/Prueba-Desarrollo-BackEnd/blob/master/recursos/RegistrarVenta.JPG " Resultado")
 #### Detalles de una venta:
-![alt text](https://github.com/luis572/Prueba-Desarrollo-BackEnd/tree/master/recursos/Detalles Venta.JPG " Resultado")
+![alt text](https://github.com/luis572/Prueba-Desarrollo-BackEnd/blob/master/recursos/Detalles_Venta.JPG " Resultado")
 #### Registrar Producto:
-![alt text](https://github.com/luis572/Prueba-Desarrollo-BackEnd/tree/master/recursos/registroProducto.JPG " Resultado")
+![alt text](https://github.com/luis572/Prueba-Desarrollo-BackEnd/blob/master/recursos/registroProducto.JPG " Resultado")
 #### Actualizar Producto:
-![alt text](https://github.com/luis572/Prueba-Desarrollo-BackEnd/tree/master/recursos/updateProducto.JPG " Resultado")
+![alt text](https://github.com/luis572/Prueba-Desarrollo-BackEnd/blob/master/recursos/updateProducto.JPG " Resultado")
 #### Get producto por id:
-![alt text](https://github.com/luis572/Prueba-Desarrollo-BackEnd/tree/master/recursos/getProducto.JPG " Resultado")
+![alt text](https://github.com/luis572/Prueba-Desarrollo-BackEnd/blob/master/recursos/getProducto.JPG " Resultado")
 ### Pruebas unitarias: 
 Las pruebas se implementaron con Junit y Mockito: 
-![alt text](https://github.com/luis572/Prueba-Desarrollo-BackEnd/tree/master/recursos/Pruebas_Unitarias.JPG " Resultado")
+![alt text](https://github.com/luis572/Prueba-Desarrollo-BackEnd/blob/master/recursos/Pruebas_Unitarias.JPG " Resultado")
 
 #### resultados pruebas unitarias 
 
